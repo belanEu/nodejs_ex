@@ -11,11 +11,17 @@ module.exports = async(req, res) => {
     color = query.color.split(',').map(item => +item),
     threshold = +query.threshold;
 
-    const frontImageFile = path.resolve(imagesDir, imageStore.findOne(frontImageId).name),
-    backImageFile = path.resolve(imagesDir, imageStore.findOne(backImageId).name);
+    const fontImage = imageStore.findOne(frontImageId),
+    backImage = imageStore.findOne(backImageId);
+
+    const frontImageFile = path.resolve(imagesDir, fontImage.name),
+    backImageFile = path.resolve(imagesDir, backImage.name);
 
     const frontImageStream = createReadStream(frontImageFile),
     backImageStream = createReadStream(backImageFile);
+
+    res.set('Content-Disposition', `attachment; filename="merged_${fontImage.name}"`);
+    res.set('Content-Type', fontImage.mimeType);
 
     replaceBackground(frontImageStream, backImageStream, color, threshold)
     .then(readableStream => readableStream.pipe(res));
