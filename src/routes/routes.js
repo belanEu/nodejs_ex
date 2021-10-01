@@ -11,7 +11,7 @@ router.get('/image/:id', checkImageExistence, controller.downloadImageById);
 // // /merge?front=<id>&back=<id>&color=145,54,32&threshold=5 
 router.get('/merge', checkValidImages, controller.mergeImages);
 
-router.post('/upload', uploadImageService.single('uploaded_file'), controller.uploadImage);
+router.post('/upload', uploadImageService.single('image'), controller.uploadImage);
 
 router.delete('/image/:id', checkImageExistence, controller.deleteImageById);
 
