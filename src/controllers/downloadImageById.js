@@ -7,12 +7,9 @@ module.exports = (req, res) => {
     const id = req.params.id;
 
     const image = imageStore.findOne(id);
-    console.log(image);
 
     const pathToImage = path.resolve(config.imagesDir, image.name);
-    console.log(pathToImage);
     let readStream = fs.createReadStream(pathToImage);
-    // todo: скачивать в нужном формате
     res.set('Content-Disposition', `attachment; filename="image_${image.name}"`);
     res.set('Content-Type', image.mimeType);
 
