@@ -12,6 +12,8 @@ module.exports = (req, res) => {
     const pathToImage = path.resolve(config.imagesDir, image.name);
     console.log(pathToImage);
     let readStream = fs.createReadStream(pathToImage);
+    res.set('Content-Disposition', `attachment; filename="image_${image.name}"`);
+    res.set('Content-Type', image.mimeType);
 
     readStream.pipe(res);
 };
