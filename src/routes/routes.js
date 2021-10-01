@@ -6,7 +6,7 @@ const uploadImageService = require('../services/uploadImageService');
 const checkImageExistence = require('../middleware/checkImageExistence');
 
 router.get('/list', controller.getListOfImages);
-// router.get('/image/:id', controller.downloadImageById());
+router.get('/image/:id', controller.downloadImageById);
 // // /merge?front=<id>&back=<id>&color=145,54,32&threshold=5 
 // router.get('/merge', controller.mergeImages());
 

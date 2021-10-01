@@ -1,10 +1,11 @@
 const uploadImage = require('./uploadImage');
 const deleteImageById = require('./deleteImageById');
 const getListOfImages = require('./getListOfImages');
+const downloadImageById = require('./downloadImageById');
 
 module.exports = {
     getListOfImages,
-    // downloadImageById: (req, res) => {},
+    downloadImageById,
     // mergeImages: (req, res) => {},
     uploadImage,
     deleteImageById
