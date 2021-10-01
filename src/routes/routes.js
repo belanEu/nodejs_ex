@@ -10,6 +10,6 @@ const controller = require('../controllers/controllers');
 
 router.post('/upload', controller.uploadImage);
 
-// router.delete('/image/:id', controller.deleteImageById());
+router.delete('/image/:id', controller.deleteImageById);
 
 module.exports = router;
