@@ -78,7 +78,7 @@ class ImageStore extends EventEmitter {
   /**
    * 
    * @param {String} id 
-   * @returns {?String}
+   * @returns {?Image}
    */
   findOne(id) {
     return this.images[id] ? this.images[id] : null;

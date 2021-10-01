@@ -8,10 +8,11 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-    if (['jpeg', 'jpg', 'png'].indexOf(file.mimetype)) {
+    if (['image/jpg', 'image/jpeg', 'image/png'].indexOf(file.mimetype) !== -1) {
         cb(null, true);
     } else {
         cb(null, false);
+        throw Error('Неверный формат загружаемого файла!');
     }
 };
 
