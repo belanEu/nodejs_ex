@@ -23,12 +23,13 @@ class ImageStore extends EventEmitter {
 
     if (typeof dump === 'object') {
       for (let id in dump) {
+        let row = dump[id];
         this.images[id] = new Image(
-          dump.id,
-          dump.name,
-          dump.size,
-          dump.uploadedAt,
-          dump.mimeType
+          row.id,
+          row.name,
+          row.size,
+          row.uploadedAt,
+          row.mimeType
           );
       }
     }
