@@ -6,8 +6,8 @@ module.exports = (req, res) => {
         if (!file) {
             return res.sendStatus(400);
         }
-        imageStore.insert(file.filename, file.size, (new Date).getTime(), file.mimetype);
-        res.sendStatus(200);
+        const id = imageStore.insert(file.filename, file.size, (new Date).getTime(), file.mimetype);
+        res.json({"id": id});
     } catch (err) {
         res.sendStatus(400);
     }

@@ -47,6 +47,8 @@ class ImageStore extends EventEmitter {
     this.images[id] = new Image(id, name, size, uploadedAt, mimeType);
 
     this.emit('changed');
+
+    return id;
   }
 
   /**
