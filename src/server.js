@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 
-const config = require('./src/config/config');
-const routes = require('./src/routes/routes');
+const config = require('./config/config');
+const routes = require('./routes/routes');
 
 app.use(express.static(config.imagesDir));
 app.use('/', routes);
