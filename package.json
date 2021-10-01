@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/belanEu/nodejs_ex#readme",
   "dependencies": {
+    "backrem": "^1.1.0",
     "express": "^4.17.1",
     "image-size": "^1.0.0",
     "multer": "^1.4.3",
