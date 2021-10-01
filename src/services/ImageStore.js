@@ -68,7 +68,7 @@ class ImageStore extends EventEmitter {
    * @returns {Array}
    */
   getAll(columns) {
-    return Object.values(this).map(image => {
+    return Object.values(this.images).map(image => {
       const res = {};
       columns.forEach(column => res[column] = image[column]);
 
