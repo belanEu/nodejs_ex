@@ -1,10 +1,10 @@
 const imageStore = require('../services/ImageStore');
-const { existsSync } = require('fs');
+const { exists } = require('../utils/fs');
 const path = require('path');
 const sizeOf = require('image-size');
 const { imagesDir } = require('../config/config');
 
-module.exports = (req, res, next) => {
+module.exports = async(req, res, next) => {
     const idFrontImage = req.query.front,
     idBackImage = req.query.back;
 
@@ -12,18 +12,18 @@ module.exports = (req, res, next) => {
     backImage = imageStore.findOne(idBackImage);
 
     if (!(frontImage && backImage)) {
-        res.sendStatus(404);
+        return res.sendStatus(404);
     }
 
     const frontImageFile = path.resolve(imagesDir, frontImage.name),
     backImageFile = path.resolve(imagesDir, backImage.name);
 
     if (!(
-        existsSync(frontImageFile)
+        await exists(frontImageFile)
         &&
-        existsSync(backImageFile)
+        await exists(backImageFile)
         )) {
-        res.sendStatus(404);
+        return res.sendStatus(404);
     }
 
     const dimensionsOfFrontImage = sizeOf(frontImageFile),
@@ -34,7 +34,7 @@ module.exports = (req, res, next) => {
         &&
         dimensionsOfFrontImage.height === dimensionsOfBackImage.height
         )) {
-            res.sendStatus(400);
+            return res.sendStatus(400);
         }
 
     next();

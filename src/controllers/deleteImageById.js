@@ -9,5 +9,5 @@ module.exports = async(req, res) => {
     await fs.removeFile(path.resolve(imagesDir, image.name));
     imageStore.remove(id);
 
-    res.status(200).send(id);
+    res.json({"id": id});
 };
