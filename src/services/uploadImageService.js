@@ -1,9 +1,15 @@
 const path = require('path');
 const multer = require('multer');
+const { uuid } = require('uuidv4');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.resolve(__dirname, '../../files/images/'));
+    },
+    filename: (req, file, cb) => {
+        console.log(file);
+        const ext = path.extname(file.originalname);
+        cb(null, `image_${uuid()}${ext}`);
     }
 });
 
