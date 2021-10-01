@@ -1,8 +1,10 @@
 const imageStore = require('../services/ImageStore');
 const uploadImageService = require('./../services/uploadImageService');
+const checkFileFormat = require('../middleware/checkFileFormat');
 
 module.exports = [
     uploadImageService.single('uploaded_file'),
+    checkFileFormat,
     (req, res) => {
         try {
             const file  = req.file;
