@@ -1,6 +1,9 @@
 files
 !files/**/.gitkeep
 
+db
+!db/**/.gitkeep
+
 # Logs
 logs
 *.log
