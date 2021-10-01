@@ -4,6 +4,8 @@ files
 db
 !db/**/.gitkeep
 
+package-lock.json
+
 # Logs
 logs
 *.log
