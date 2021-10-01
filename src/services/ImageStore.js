@@ -41,9 +41,9 @@ class ImageStore extends EventEmitter {
    * @param {Number} uploadedAt 
    * @param {String} mimeType 
    */
-  insert(name, size, body, uploadedAt, mimeType) {
+  insert(name, size, uploadedAt, mimeType) {
     const id = uuid();
-    this.images[id] = new Image(id, name, size, body, uploadedAt, mimeType);
+    this.images[id] = new Image(id, name, size, uploadedAt, mimeType);
 
     this.emit('changed');
   }

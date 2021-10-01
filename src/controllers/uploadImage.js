@@ -6,7 +6,7 @@ module.exports = [
     (req, res) => {
         try {
             const file  = req.file;
-            imageStore.insert(file.filename, file.size, file.buffer, (new Date).getTime(), file.mimetype);
+            imageStore.insert(file.filename, file.size, (new Date).getTime(), file.mimetype);
             res.sendStatus(200);
         } catch (err) {
             res.status(400).send(err.message);
