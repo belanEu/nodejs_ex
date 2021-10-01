@@ -19,6 +19,7 @@
   "homepage": "https://github.com/belanEu/nodejs_ex#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "image-size": "^1.0.0",
     "multer": "^1.4.3",
     "uuidv4": "^6.2.12"
   }
